@@ -5,6 +5,13 @@ ports:
   # MySQL/SQLite server
   - port: 3306
     onOpen: ignore
+     # Laravel Mix
+  - port: 3000
+    onOpen: open-preview
+  - port: 8080
+    onOpen: open-preview
+    
+
 
 tasks:
   - init: >
