@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Dashboard from "./Dashboard/Dashboard";
 import Login from "./Login/Login";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute"
 
 function App() {
     return (

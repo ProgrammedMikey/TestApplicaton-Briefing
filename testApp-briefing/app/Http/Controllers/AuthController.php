@@ -46,6 +46,8 @@ class AuthController extends Controller
             ], 401);
         }
 
+        $request->session()->regenerate();
+        
         $token = $user->createToken('myapptoken')->plainTextToken;
 
         $response = [
@@ -59,8 +61,11 @@ class AuthController extends Controller
     public function logout (Request $request) {
         auth()->user()->tokens()->delete();
 
-        return [
-            'message' => 'Logged out'
-        ];
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+    
+        return response()->json('Successfully logged out');
+    
     }
 }

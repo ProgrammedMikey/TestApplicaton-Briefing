@@ -7,7 +7,7 @@ import {
     CssBaseline,
     Typography
 } from "@mui/material";
-import user from "../../Models/user";
+import user from "../../auth/user";
 import {withRouter} from "react-router-dom";
 
 function Login({history, location}) {
