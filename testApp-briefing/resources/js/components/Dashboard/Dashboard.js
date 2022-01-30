@@ -13,11 +13,9 @@ function Dashboard() {
                         Hello {user.name}, you're logged in!
                     </Typography>
                 </Grid>
-                <Grid item>
-                        <Orders />
-                </Grid>
-
             </Grid>
+            <Orders />
+
         </MainLayout>
     )
 }
