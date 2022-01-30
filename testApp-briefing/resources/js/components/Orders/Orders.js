@@ -1,5 +1,12 @@
 import React from 'react';
-import {Table,TableBody,TableCell,TableContainer,TableHead,TableRow } from "@mui/material";
+import {Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Button} from "@mui/material";
+import InfoIcon from '@mui/icons-material/Info';    
 import user from "../../auth/user";
  
 const Orders = () => {
@@ -11,8 +18,15 @@ const Orders = () => {
         })
         .catch(error => console.error(error));
     }, []);
+
+    const handleClick = (uid) => {
+          var link = `https://zotterdev.developer.at/rest/shop_item/${uid}`      
     
+          window.open(link, "_blank");
+      }
+
     const orderList = orders.map((order) =>
+            
             <TableRow
               key={order.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -22,7 +36,12 @@ const Orders = () => {
               </TableCell>
               <TableCell align="right">{order.order_number}</TableCell>
               <TableCell align="right">{order.order_status}</TableCell>
-              <TableCell align="right">{order.order_status}</TableCell>
+              <TableCell align="right">
+                  {/* <Button onClick={handleOpen}><InfoIcon /></Button> */}
+                  <Button onClick={() => handleClick(order.uid)} variant="contained" startIcon={<InfoIcon />}>
+                    View
+                  </Button>
+              </TableCell>
             </TableRow>
           );
     return (
