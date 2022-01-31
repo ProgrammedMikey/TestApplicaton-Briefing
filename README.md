@@ -1,6 +1,7 @@
-# TestApplicaton-Briefing
+## About
+TestApplication-Briefing developed with Laravel and React
+### Check it out
+Live site at:
 
-live demo at:
-
-login email: test@test.com
+Login email: test@test.com
 login password: test
