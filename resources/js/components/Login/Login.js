@@ -5,12 +5,14 @@ import {
     Container,
     TextField,
     CssBaseline,
-    Typography
-} from "@mui/material";
+    Typography,
+    Alert,
+    AlertTitle } from "@mui/material";
 import user from "../../auth/user";
 import {withRouter} from "react-router-dom";
 
 function Login({history, location}) {
+    const [errorMessage, setErrorMessage] = React.useState('');
     
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -27,8 +29,11 @@ function Login({history, location}) {
         }
 
         window.axios.post('/api/login', loginCredentials).then((response) => {
-            user.authenticated(response.data, authenticatedCallback)
+            user.authenticated(response.data, authenticatedCallback)  
         })
+        .catch(function (error) {
+            setErrorMessage(error.response.data.message);
+          });
     }
 
     return (
@@ -73,6 +78,12 @@ function Login({history, location}) {
                     >
                         Login
                     </Button>
+
+                    {errorMessage && 
+                    <Alert severity="error">
+                      <AlertTitle>Error</AlertTitle> {errorMessage} 
+                    </Alert>}
+
                 </Box>
             </Box>
         </Container>

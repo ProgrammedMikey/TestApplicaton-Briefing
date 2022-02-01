@@ -41,7 +41,7 @@ class AuthController extends Controller
         $user = User::where('email', $fields['email'])->first();
 
         if(!$user || !Hash::check($fields['password'], $user->password)) {
-            return response([
+            return response()->json([
                 'message' => 'Bad credentials'
             ], 401);
         }
